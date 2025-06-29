@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Love Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #d2b48c, #a67b5b); /* Dégradé marron clair et chaleureux */
+            background-image: url('an.webp'); /* Utilisation de l'image de fond */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .hi-fofa {
+            font-size: 36px;
+            color: #8b4513; /* Marron foncé pour un effet chaleureux */
+            text-shadow: 0 0 20px rgba(139, 69, 19, 0.8);
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .message {
+            font-size: 24px;
+            color: #4e342e; /* Marron profond */
+            background: rgba(255, 239, 213, 0.9); /* Fond doux (beige pâle) pour une ambiance familiale */
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 80%;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .word {
+            opacity: 0;
+            animation: fadeInWord 0.7s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInWord {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hi-fofa" id="hi-fofa">fofa My Love </div>
+    <div class="message" id="message"></div>
+    <script>
+        function showMessage() {
+            const messageDiv = document.getElementById("message");
+            messageDiv.innerHTML = ""; 
+            messageDiv.style.visibility = "visible";
+            messageDiv.style.opacity = "1"; 
+            
+            const words = ["Distance", "can’t", "break", "the", "bond", "of", "love.", "Stay", "strong,", "you", "are", "never", "alone."];
+
+            words.forEach((word, index) => {
+                let span = document.createElement("span");
+                span.classList.add("word");
+                span.style.animationDelay = `${index * 0.5}s`;
+                span.innerText = word;
+                messageDiv.appendChild(span);
+            });
+        }
+
+        // Affiche "Hi fofa" puis le message après 2 secondes
+        setTimeout(() => {
+            document.getElementById("hi-fofa").style.opacity = "1";
+            setTimeout(showMessage, 2000);
+        }, 1000);
+    </script>
+</body>  
+</html>
